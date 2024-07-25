@@ -28,6 +28,9 @@ function ListToDo(){
             <div className={styles.wrapper}>
                 <div className={styles.wrapper_list}>
                     <div className={styles.list_input}>
+                        <div className={styles.list_checkbox}>
+                            a
+                        </div>
                         <input
                             type="text"
                             value={todo}
@@ -35,12 +38,11 @@ function ListToDo(){
                             onKeyDown={handleKeyPress}
                             placeholder="Create a new todo..."
                         />
-                
                     </div>
                     <div className={styles.list_output}>
                         <ul>
                             {todos.map((todo, index) =>(
-                                <li key={index}>{todo}</li>
+                                <li key={index}><div>a</div><div className={styles.todo}>{todo}</div></li>
                             ))}
                         </ul>
                     </div>
