@@ -1,9 +1,29 @@
 .wrapper{
     margin: 0;
     padding: 0;
-    .title{
-        text-transform: uppercase;
-        letter-spacing: 10px;
-        text-align: center;
+    
+    
+    .background_box{
+        top: 0;
+        height: 25vh;
+        background: linear-gradient(0.25turn, rgba(146, 32, 246, 0.4), rgba(55, 78, 250, 0.4)), url(../../Pictures/mountain.jpg);
+        background-position: center;
+        background-size: cover;
     }
+
+    .list_box{
+        position: relative;
+        top: -20vh;
+
+        .title{
+            max-width: 30%;
+            margin: 40px auto;
+            text-transform: uppercase;
+            letter-spacing: 10px;            
+            color: white;
+        }
+
+    }
+    
+    
 }

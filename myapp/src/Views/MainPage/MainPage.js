@@ -6,8 +6,11 @@ const MainPage = () =>{
 
     return(
         <div className={styles.wrapper}>
-            <h1 className={styles.title}>Todo</h1>
-            <ListToDo />
+            <div className={styles.background_box}></div>
+            <div className={styles.list_box}>
+                <h1 className={styles.title}>Todo</h1>
+                <ListToDo />
+            </div>
         </div>
     )
 }

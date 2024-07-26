@@ -57,7 +57,7 @@ function ListToDo(){
                         <ul>                            
                             {todos.map((todo, index) => (
                                 <li key={index} onClick={() => toggleTodoDone(index)} className={todo.done ? styles.done : ''}>
-                                    <div>
+                                    <div className={styles.output_checkbox}>
                                         <FontAwesomeIcon icon={todo.done ? faCircleCheck : faCircle} />
                                     </div>
                                     <div className={styles.todo}>{todo.text}</div>
@@ -65,7 +65,7 @@ function ListToDo(){
                             ))}
                         </ul>
                         <div className={styles.user_controll}>
-                            <div>Counter</div>
+                            <div className={styles.counter}>Counter</div>
                             <div className={styles.button}>All</div>
                             <div className={styles.button}>Active</div>
                             <div className={styles.button}>Completed</div>

@@ -6,6 +6,10 @@
         
 
         .list_input{
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 30px;
             
             .list_checkbox{
                 display: inline-block;
@@ -16,7 +20,8 @@
                 display: inline-block;
                 padding: 12px;
                 border: none;  
-                font-size: 14px;             
+                font-size: 14px;  
+                font-weight: 600;           
             }
             
             input:focus{
@@ -25,25 +30,47 @@
         }
 
         .list_output{
-            
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 10px 12px 15px 1px rgba(199, 199, 199, .3);
+            font-weight: 600; 
+
             ul{
                 list-style: none;
                 padding: 0;
+                margin: 0;
+                
 
                 li>div{
                     display: inline-block;
                 }
 
                 li{
+                    cursor: pointer;
+                    padding: 10px;
+                    margin-bottom: 5px;
+                    border-bottom: solid 1px var(--LightGrey);
+
+                    .output_checkbox{
+                        color: var(--LightGrey);
+                    }
+
                     .todo{
                         padding: 12px;
-                        cursor: pointer;
                     }
                 }
 
-                li.done .todo{
-                    text-decoration: line-through;
-                    color: var(--LightGrey);
+                li.done{
+                    .todo{
+                        text-decoration: line-through;
+                        color: var(--LightGrey);
+                    }
+
+                    .output_checkbox{
+                        // background: -webkit-linear-gradient(#9220F6, #374EFA);
+                        // -webkit-background-clip: text;
+                        // -webkit-text-fill-color: transparent;          
+                    }
                 }
             }
 
@@ -72,8 +99,11 @@
                 }
 
                 .button{
-                    cursor: pointer;
-                    
+                    cursor: pointer; 
+                }
+
+                .button:hover{
+                    color: var(--Blue);
                 }
             }
         }
