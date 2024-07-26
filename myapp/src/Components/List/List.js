@@ -84,16 +84,6 @@ function ListToDo(){
                         />
                     </div>
                     <div className={styles.list_output}>
-                        {/* <ul>                            
-                            {filteredTodos().map((todo, index) => (
-                                <li key={index} onClick={() => toggleTodoDone(index)} className={todo.done ? styles.done : ''}>
-                                    <div className={styles.output_checkbox}>
-                                        <FontAwesomeIcon icon={todo.done ? faCircleCheck : faCircle} />
-                                    </div>
-                                    <div className={styles.todo}>{todo.text}</div>
-                                </li>
-                            ))}
-                        </ul> */}
                         <DragDropContext onDragEnd={handleOnDragEnd}>
                             <Droppable droppableId="todo">
                                 {(provided) => (
@@ -126,10 +116,8 @@ function ListToDo(){
                                         {provided.placeholder}
                                     </ul>
                                 )}
-
                             </Droppable>
-                        </DragDropContext>
-                        
+                        </DragDropContext>                        
                         <div className={styles.user_controll}>
                             <div className={styles.counter}>
                                 {remainingTodo} items left
@@ -139,6 +127,7 @@ function ListToDo(){
                             <div className={styles.button} onClick={() => setFilter('completed')}>Completed</div>
                             <div className={styles.button} onClick={clearCompletedTodos}>Clear Completed</div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

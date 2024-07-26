@@ -105,3 +105,45 @@
         }
     }
 }
+
+@media only screen and (min-width: 1024px) and (max-width: 1510px) {
+    .wrapper{
+        max-width: 50%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .wrapper{
+        max-width: 70%;
+    }
+}
+
+@media only screen and (min-width: 550px) and (max-width: 768px) {
+    .wrapper{
+        max-width: 90%;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .wrapper{
+        max-width: 90%;
+
+        .wrapper_list{
+            .list_output{
+                .user_controll{
+                    div{
+                        display: block;
+                    }
+                    :first-child{
+                        position: relative;   
+                    }
+    
+                    :last-child{
+                        position: relative;
+                    }
+                }
+            }
+        }
+    }
+}
+

@@ -10,6 +10,9 @@ const MainPage = () =>{
             <div className={styles.list_box}>
                 <h1 className={styles.title}>Todo</h1>
                 <ListToDo />
+                <div className={styles.draganddrop_info}>
+                    Drag and drop to reorder list when All elements displayed
+                </div>
             </div>
         </div>
     )

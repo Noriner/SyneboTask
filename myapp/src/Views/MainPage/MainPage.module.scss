@@ -23,7 +23,44 @@
             color: white;
         }
 
+        .draganddrop_info{
+            margin-top: 40px;
+            color: var(--LightGrey);
+            text-align: center;
+            font-weight: 600;
+        }
+
     }
     
     
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1510px) {
+    .wrapper{
+        .list_box{  
+            .title{
+                max-width: 50%;
+            }
+        }    
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .wrapper{
+        .list_box{  
+            .title{
+                max-width: 70%;
+            }
+        }    
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .wrapper{
+        .list_box{  
+            .title{
+                max-width: 90%;
+            }
+        }    
+    }
 }
