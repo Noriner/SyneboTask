@@ -8,6 +8,7 @@ function ListToDo(){
 
     const [todo,setTodo] = useState('');
     const [todos,setTodos] = useState([]);
+    const [filter, setFilter] = useState('all');
 
     const handleInputChange = (e) => {
         setTodo(e.target.value);
@@ -36,6 +37,23 @@ function ListToDo(){
         setTodos(newTodos);
     };
 
+    const filteredTodos = () => {
+        switch (filter) {
+            case 'active':
+                return todos.filter(todo => !todo.done);
+            case 'completed':
+                return todos.filter(todo => todo.done);
+            default:
+                return todos;
+        }
+    };
+
+    const clearCompletedTodos = () => {
+        const newTodos = todos.filter(todo => !todo.done);
+        setTodos(newTodos);
+    };
+
+    const remainingTodo = todos.filter(todo => !todo.done).length;
 
     return(
         <>
@@ -55,7 +73,7 @@ function ListToDo(){
                     </div>
                     <div className={styles.list_output}>
                         <ul>                            
-                            {todos.map((todo, index) => (
+                            {filteredTodos().map((todo, index) => (
                                 <li key={index} onClick={() => toggleTodoDone(index)} className={todo.done ? styles.done : ''}>
                                     <div className={styles.output_checkbox}>
                                         <FontAwesomeIcon icon={todo.done ? faCircleCheck : faCircle} />
@@ -65,11 +83,13 @@ function ListToDo(){
                             ))}
                         </ul>
                         <div className={styles.user_controll}>
-                            <div className={styles.counter}>Counter</div>
-                            <div className={styles.button}>All</div>
-                            <div className={styles.button}>Active</div>
-                            <div className={styles.button}>Completed</div>
-                            <div className={styles.button}>Clear Completed</div>
+                            <div className={styles.counter}>
+                                {remainingTodo} items left
+                            </div>
+                            <div className={styles.button} onClick={() => setFilter('default')}>All</div>
+                            <div className={styles.button} onClick={() => setFilter('active')}>Active</div>
+                            <div className={styles.button} onClick={() => setFilter('completed')}>Completed</div>
+                            <div className={styles.button} onClick={clearCompletedTodos}>Clear Completed</div>
                         </div>
                     </div>
                 </div>
