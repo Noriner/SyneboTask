@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import { faCircleCheck} from '@fortawesome/free-solid-svg-icons';
 
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+
 function ListToDo(){
 
     const [todo,setTodo] = useState('');
@@ -55,6 +57,16 @@ function ListToDo(){
 
     const remainingTodo = todos.filter(todo => !todo.done).length;
 
+    function handleOnDragEnd(result) {
+        if (!result.destination) return;
+
+        const reorderedTodos = Array.from(todos);
+        const [movedItem] = reorderedTodos.splice(result.source.index, 1);
+        reorderedTodos.splice(result.destination.index, 0, movedItem);
+
+        setTodos(reorderedTodos);
+    }
+
     return(
         <>
             <div className={styles.wrapper}>
@@ -72,7 +84,7 @@ function ListToDo(){
                         />
                     </div>
                     <div className={styles.list_output}>
-                        <ul>                            
+                        {/* <ul>                            
                             {filteredTodos().map((todo, index) => (
                                 <li key={index} onClick={() => toggleTodoDone(index)} className={todo.done ? styles.done : ''}>
                                     <div className={styles.output_checkbox}>
@@ -81,7 +93,43 @@ function ListToDo(){
                                     <div className={styles.todo}>{todo.text}</div>
                                 </li>
                             ))}
-                        </ul>
+                        </ul> */}
+                        <DragDropContext onDragEnd={handleOnDragEnd}>
+                            <Droppable droppableId="todo">
+                                {(provided) => (
+                                    <ul 
+                                        {...provided.droppableProps}
+                                        ref={provided.innerRef}
+                                    >                            
+                                        {filteredTodos().map((todo, index) => (
+                                            <Draggable
+                                                key={index}
+                                                draggableId={`todo-${index}`}
+                                                index={index}
+                                            >
+                                                {(provided) => (
+                                                    <li
+                                                        ref={provided.innerRef}
+                                                        {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                        onClick={() => toggleTodoDone(index)}
+                                                        className={todo.done ? styles.done : ''}
+                                                    >
+                                                        <div>
+                                                            <FontAwesomeIcon icon={todo.done ? faCircleCheck : faCircle} />
+                                                        </div>
+                                                        <div className={styles.todo}>{todo.text}</div>
+                                                    </li>
+                                                )}
+                                            </Draggable>
+                                        ))}
+                                        {provided.placeholder}
+                                    </ul>
+                                )}
+
+                            </Droppable>
+                        </DragDropContext>
+                        
                         <div className={styles.user_controll}>
                             <div className={styles.counter}>
                                 {remainingTodo} items left
