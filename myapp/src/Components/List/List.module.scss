@@ -9,6 +9,7 @@
             
             .list_checkbox{
                 display: inline-block;
+                color: var(--DarkGrey);
             }
         
             input{
@@ -36,7 +37,43 @@
                 li{
                     .todo{
                         padding: 12px;
+                        cursor: pointer;
                     }
+                }
+
+                li.done .todo{
+                    text-decoration: line-through;
+                    color: var(--LightGrey);
+                }
+            }
+
+            .user_controll{
+                position: relative;
+                text-align: center;
+
+                div{
+                    display: inline-block;  
+                    margin: 5px;
+                    padding: 10px;
+                }
+
+                :first-child{
+                    position: absolute;
+                    left: 0;
+                }
+
+                :last-child{
+                    position: absolute;
+                    right: 0;
+                }
+
+                .counter{
+
+                }
+
+                .button{
+                    cursor: pointer;
+                    
                 }
             }
         }
